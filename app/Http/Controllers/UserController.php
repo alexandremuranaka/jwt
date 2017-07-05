@@ -8,6 +8,7 @@ use App\User;
 use JWTAuthException;
 use Image;
 use Validator;
+use Carbon;
 
 class UserController extends Controller
 {
@@ -17,10 +18,8 @@ class UserController extends Controller
     }
 
 
-    public function teste(Request $request)
-    {
-      return response()->json('ola');
-    }
+
+
     public function register(Request $request){
 
       $register_rules = [
@@ -46,6 +45,8 @@ class UserController extends Controller
         $user->email = $request->get('email');
         $user->cellphone = intval($cellphone);
         $user->password =  bcrypt($request->get('password'));
+        $user->created_at =  Carbon::now();
+        $user->updated_at =  Carbon::now();
 
         //image
         if( $request->photo )

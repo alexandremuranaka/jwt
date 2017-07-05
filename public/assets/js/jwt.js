@@ -55,7 +55,7 @@ $("#btn_login").on("click",function(event){
 
     login = $("#form_login").serializeArray();
   $.ajax({
-      url: 'http://www.api.bymdes.com.br/api/auth/login',
+      url: '/api/auth/login',
       type: 'POST',
       data:login,
       dataType: 'JSON',

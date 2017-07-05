@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
-class HospitalsTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +17,11 @@ class HospitalsTableSeeder extends Seeder
           DB::table('users')->insert([
               'name' => 'John Doe',
               'email' => 'john.doe@gmail.com',
-              'cellphone' => '(11)99999-9999',
+              'cellphone' => '11999999999',
               'photo' => '/assets/avatar/1499112171.jpg',
               'password' => bcrypt('123456'),
+              'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+              'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
           ]);
       }
     }
