@@ -16,7 +16,6 @@ class CreateHospitalsTable extends Migration
         Schema::create('hospitals', function (Blueprint $table) {
             $table->integer('id')->primary('id');
             $table->string('name')->unique();
-            $table->timestamps();
         });
     }
 

@@ -16,37 +16,27 @@ class HospitalsTableSeeder extends Seeder
       {
         DB::table('hospitals')->insert([
           'id' => 1,
-          'name' => 'Oswaldo Cruz',
-          'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-          'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+          'name' => 'Oswaldo Cruz'
         ]);
 
         DB::table('hospitals')->insert([
           'id' => 2,
-          'name' => 'Santa Catarina',
-          'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-          'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+          'name' => 'Santa Catarina'
         ]);
 
         DB::table('hospitals')->insert([
           'id' => 3,
           'name' => 'São Camilo - Ipiranga',
-          'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-          'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('hospitals')->insert([
           'id' => 4,
           'name' => 'São Camilo - Pompéia',
-          'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-          'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('hospitals')->insert([
           'id' => 5,
-          'name' => 'São Camilo - Santana',
-          'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-          'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+          'name' => 'São Camilo - Santana'
         ]);
       }
     }
