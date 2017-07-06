@@ -18,8 +18,6 @@ class UserController extends Controller
     }
 
 
-
-
     public function register(Request $request){
 
       $register_rules = [
@@ -115,57 +113,11 @@ class UserController extends Controller
 
 
       }
-
-      /*
-      if (filter_var($request->user, FILTER_VALIDATE_EMAIL)) {
-      {
-
-
-        $validator = Validator::make($request->all(),$register_rules);
-
-        if ($validator->fails()) {
-          return response()->json($validator->messages(), 200);
-        }
-        else
-        {
-          $data = ['user' => 'email'];
-          return response()->json($data);
-        }
-      }
-      else
-      {
-        $register_rules = [
-          'user' => 'int',
-          'password' => 'required',
-        ];
-
-        $validator = Validator::make($request->all(),$register_rules);
-        $data = ['user' => 'cellphone'];
-        return response()->json($data);
-      }
-        $credentials = $request->only('email', 'password');
-        $token = null;
-        try {
-           if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['invalid_email_or_password'], 422);
-           }
-        } catch (JWTAuthException $e) {
-            return response()->json(['failed_to_create_token'], 500);
-        }
-        $user = JWTAuth::toUser($token);
-        return response()->json(['token' => $token, 'user' => $user]);
-        */
     }
 
+    public function getAuthUser(Request $request){
+        $user = JWTAuth::toUser($request->token);
+        return response()->json(['result' => $user]);
+    }
 
-    //
-    // public function getAuthUser(Request $request){
-    //     $user = JWTAuth::toUser($request->token);
-    //     return response()->json(['result' => $user]);
-    // }
-    // public function all(Request $request){
-    //   $user = JWTAuth::toUser($request->token);
-    //   $users = User::get();
-    //   return response()->json($users);
-    // }
 }

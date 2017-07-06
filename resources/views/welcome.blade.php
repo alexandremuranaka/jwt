@@ -82,21 +82,13 @@
           <div class="container">
             <div class="row">
               <div class="col-xs-12 col-sm-4">
-                <button id="btn_no_token" class="btn btn-primary">Com token do formulario</button>
+                <div id="user_data"></div>
+                <button id="btn_user_jwt" class="btn btn-primary">Usuario</button>
               </div>
               <div class="col-xs-12 col-sm-4">
-                <button id="btn_user_jwt" class="btn btn-primary">Meu usuario</button>
+                <ul id="hospital_list"></ul>
               </div>
-              <div class="col-xs-12 col-sm-4">
-                <button id="btn_user_list_jwt" class="btn btn-primary">Todos Usuarios</button>
-              </div>
-              </div>
-              <div class="col-xs-12 col-sm-4">
-                <button id="btn_page_list" class="btn btn-primary">Todas Páginas sem token</button>
-              </div>
-              <div class="col-xs-12 col-sm-4">
-                <button id="btn_page_list_jwt" class="btn btn-primary">Todas Páginas com token</button>
-              </div>
+
             </div>
           </div>
         </section>

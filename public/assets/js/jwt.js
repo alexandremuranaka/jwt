@@ -47,8 +47,26 @@ $("#btn_cadastro").on("click",function(event){
 });
   */
 //login
-tokenAuth = '';
+token_Auth = '';
 
+
+function hospitalList(token_Auth){
+  console.log("token_Auth "+token_Auth);
+
+  var token = {token:token_Auth};
+  $.ajax({
+      url: '/api/auth/hospital',
+      type: 'POST',
+      data:token,
+      dataType: 'JSON',
+      success: function (data) {
+      console.log("=================RECEBIDO==================");
+          console.log(data);
+
+      }
+  });
+
+}
 
 $("#btn_login").on("click",function(event){
   event.preventDefault();
@@ -60,12 +78,22 @@ $("#btn_login").on("click",function(event){
       data:login,
       dataType: 'JSON',
       success: function (data) {
-      console.log("=================RECEBIDO==================");
           console.log(data);
-          if( data['token'])
-          {
+          if( data['token']){
             $("#logged").addClass("show");
-            tokenAuth = data['token'];
+
+            token_Auth = data['token'];
+
+            user_data = data['user'];
+            user_id = user_data['id'];
+            user_name = user_data['name'];
+            user_email = user_data['email'];
+            user_cellphone = user_data['cellphone'];
+            user_photo = user_data['photo'];
+
+            user = '<p><img src="'+user_photo+'" alt="'+user_id+'"/><br/>'+user_name+'<br/>'+user_email+'<br/>'+user_cellphone+'</p>';
+            $("#user_data").html(user);
+            hospitalList(token_Auth);
           }
       }
   });
@@ -93,26 +121,11 @@ $("#btn_login").on("click",function(event){
   });
 })
 */
-//sem token
-$("#btn_no_token").on("click",function(){
-  console.log('usando token do formulario');
-  var token = {token: $("#form_login input:hidden").val()};
-  $.ajax({
-      url: '/api/user',
-      type: 'GET',
-      data:token,
-      dataType: 'JSON',
-      success: function (data) {
-          console.log(data);
-
-      }
-  });
-});
 
 // meu usuario com token
 $("#btn_user_jwt").on("click",function(){
-  console.log(tokenAuth);
-  var token = {token:tokenAuth};
+  console.log(token_Auth);
+  var token = {token:token_Auth};
   $.ajax({
       url: '/api/user',
       type: 'GET',
@@ -143,39 +156,6 @@ $("#btn_user_list_jwt").on("click",function(){
 
 });
 
-// lista paginas sem token
-$("#btn_page_list").on("click",function(){
-
-  var token =  {token: $("#form_login input:hidden").val()}
-  $.ajax({
-      url: '/api/pages',
-      type: 'GET',
-      data:token,
-      dataType: 'JSON',
-      success: function (data) {
-          console.log(data);
-
-      }
-  });
-
-});
-
-// lista paginas com token
-$("#btn_page_list_jwt").on("click",function(){
-  console.log(tokenAuth);
-  var token = {token:tokenAuth};
-  $.ajax({
-      url: '/api/pages',
-      type: 'GET',
-      data:token,
-      dataType: 'JSON',
-      success: function (data) {
-          console.log(data);
-
-      }
-  });
-
-});
 
 
 //end of jquery document
