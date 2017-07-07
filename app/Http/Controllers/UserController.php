@@ -20,13 +20,27 @@ class UserController extends Controller
 
     public function register(Request $request){
 
+
+        $replaces = array("(",")","-"," ");
+        $request->cellphone = str_replace($replaces, "", $request->get('cellphone'));
+
+
       $register_rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
         'cellphone' => 'required|string|unique:users',
         'password' => 'required|string|min:6',
       ];
-     $validator = Validator::make($request->all(),$register_rules);
+
+      $register_data = array(
+        'name' => $request->name,
+        'email' => $request->email,
+        'cellphone' => $request->cellphone,
+        'password' => $request->password,
+        'photo' => $request->photo
+      );
+
+     $validator = Validator::make($register_data,$register_rules);
 
       if ($validator->fails()) {
         return response()->json($validator->messages(), 200);
@@ -35,13 +49,10 @@ class UserController extends Controller
       {
 
 
-        $replaces = array("(",")","-"," ");
-        $cellphone = str_replace($replaces, "", $request->get('cellphone'));
-
         $user = new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->cellphone = intval($cellphone);
+        $user->cellphone = intval($request->cellphone);
         $user->password =  bcrypt($request->get('password'));
         $user->created_at =  Carbon::now();
         $user->updated_at =  Carbon::now();

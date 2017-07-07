@@ -10,7 +10,7 @@ use JWTAuthException;
 
 class TussController extends Controller
 {
-  public function tuss()
+  public function tusslList()
   {
     $tuss = Tuss::get();
     return response()->json($tuss);

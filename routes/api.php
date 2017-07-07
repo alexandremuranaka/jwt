@@ -25,4 +25,5 @@ Route::post('auth/login', 'UserController@login');
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('user', 'UserController@getAuthUser');
     Route::post('/auth/hospital', 'HospitalController@hospitalList');
+    Route::post('/auth/tuss', 'TussController@tusslList');
 });
