@@ -25,6 +25,7 @@ class CreateProceduresTable extends Migration
           $table->string('patient_name')->nullable();
           $table->string('register_number')->nullable();
           $table->string('procedured_number')->nullable();
+          $table->string('procedured_comment')->nullable();
           $table->timestamps();
 
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

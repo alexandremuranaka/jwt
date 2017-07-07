@@ -125,7 +125,7 @@ $("#btn_procedure").on("click",function(){
       console.log("=================Procedures==================");
         console.log(data);
         $.each(data,function(k,v){
-          var procedures = '<tr><td>'+v["user_id"]+'</td><td>'+v["hospital_id"]+'</td><td>'+v["date"]+'</td><td>'+v["tuss_id"]+'</td><td>'+v["member_id"]+'</td><td>'+v["medical_insurance"]+'</td><td>'+v["insurance_type"]+'</td><td>'+v["patient_name"]+'</td><td>'+v["register_number"]+'</td><td>'+v["procedured_number"]+'</td></tr>';
+          var procedures = '<tr><td>'+v["user_id"]+'</td><td>'+v["hospital_id"]+'</td><td>'+v["date"]+'</td><td>'+v["tuss_id"]+'</td><td>'+v["member_id"]+'</td><td>'+v["medical_insurance"]+'</td><td>'+v["insurance_type"]+'</td><td>'+v["patient_name"]+'</td><td>'+v["register_number"]+'</td><td>'+v["procedured_number"]+'</td><td>'+v["procedured_comment"]+'</td></tr>';
           $(procedures).appendTo($(".procedures_list_content"));
 
         });

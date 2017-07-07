@@ -111,6 +111,9 @@
                   {!! Form::label('procedured_number','procedured_number') !!}
                   {!! Form::text('procedured_number') !!}
 
+                  {!! Form::label('procedured_comment','procedured_comment') !!}
+                  {!! Form::text('procedured_comment') !!}
+
                   {!! Form::submit('Registrar' ,['id' => 'btn_procedure', 'class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
 
@@ -122,14 +125,15 @@
                     <thead>
                       <th>user_id</th>
                       <th>hospital_id</th>
-                      <th>tuss_id</th>
                       <th>date</th>
+                      <th>tuss_id</th>
                       <th>member_id</th>
                       <th>medical_insurance</th>
                       <th>insurance_type</th>
                       <th>patient_name</th>
                       <th>register_number</th>
                       <th>procedured_number</th>
+                      <th>comments</th>
                     </thead>
                     <tbody class="procedures_list_content">
                     </tbody>

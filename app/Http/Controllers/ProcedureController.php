@@ -26,9 +26,7 @@ class ProcedureController extends Controller
         ->select('procedures.*')
         ->where('procedures.user_id','=',$id)
         ->get();
-
-      return view("web.procedures.index")->with('procedures', $procedures);
-
+        return response()->json($procedures);
     }
 
     /**
@@ -75,6 +73,7 @@ class ProcedureController extends Controller
         $procedure->patient_name = $request->patient_name;
         $procedure->register_number = $request->register_number;
         $procedure->procedured_number = $request->procedured_number;
+        $procedure->procedured_comment = $request->procedured_comment;
         $procedure->save();
 
         $all_procedures = Procedure::where("user_id",'=', $procedure->user_id)->first()->get();
