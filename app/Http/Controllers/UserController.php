@@ -58,6 +58,9 @@ class UserController extends Controller
 
           $user->photo = "/assets/avatar/$image_src";
         }
+        else {
+          $user->photo ="/assets/avatar/avatar_doc.jpg";
+        }
         $user->save();
       }
 
