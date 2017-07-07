@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
 use JWTAuth;
 use JWTAuthException;
 use App\User;
 use App\Procedure;
+use Carbon\Carbon;
 
 class ProcedureController extends Controller
 {
@@ -55,7 +57,7 @@ class ProcedureController extends Controller
         'date' => 'required',
       ];
 
-     $validator = Validator::make(request->all(),$procedure_rules);
+      $validator = Validator::make($request->all(),$procedure_rules);
 
       if ($validator->fails()) {
         return response()->json($validator->messages(), 200);
@@ -66,7 +68,7 @@ class ProcedureController extends Controller
         $procedure->user_id = $request->user_id;
         $procedure->hospital_id = $request->hospital_id;
         $procedure->tuss_id = $request->tuss_id;
-        $procedure->date = $request->date;
+        $procedure->date = Carbon::createFromFormat('d-m-Y',$request->date);
         $procedure->member_id = $request->member_id;
         $procedure->medical_insurance = $request->medical_insurance;
         $procedure->insurance_type = $request->insurance_type;
@@ -74,7 +76,14 @@ class ProcedureController extends Controller
         $procedure->register_number = $request->register_number;
         $procedure->procedured_number = $request->procedured_number;
         $procedure->save();
+
+        $all_procedures = Procedure::where("user_id",'=', $procedure->user_id)->first()->get();
+        return response()->json($all_procedures);
       }
+
+
+
+
     }
 
     /**

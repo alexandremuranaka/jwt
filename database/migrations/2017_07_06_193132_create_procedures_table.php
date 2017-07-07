@@ -18,7 +18,7 @@ class CreateProceduresTable extends Migration
           $table->integer('user_id')->unsigned();
           $table->integer('hospital_id')->unsigned();
           $table->integer('tuss_id')->unsigned();
-          $table->date('date');
+          $table->date('date')->format('d-m-Y');
           $table->string('member_id')->nullable();
           $table->string('medical_insurance')->nullable();
           $table->string('insurance_type')->nullable();

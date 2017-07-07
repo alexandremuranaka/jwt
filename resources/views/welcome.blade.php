@@ -78,16 +78,17 @@
               </div>
               <div class="col-xs-12 col-sm-12">
                 <h3>Novo Registro de Procedimento</h3>
-                {!! Form::open(['url' => '/api/auth/procedures/store','id' => "form_cadastro",'files' => true]) !!}
+                {!! Form::open(['url' => '/api/auth/procedures/store','id' => "form_procedure"]) !!}
 
-                  {!! Form::label('user_id','user_id') !!}
-                  {!! Form::text('user_id',null,['disabled' => 'true']) !!}
+
+                  {!! Form::hidden('user_id',null,['id' => 'user_id']) !!}
+                  {!! Form::hidden('token',null,['id' => 'token']) !!}
 
                   {!! Form::label('hospital_id','hospital_id') !!}
                   {!! Form::select('hospital_id', ['0' => 'Selecione um Hospital'] ) !!}
 
                   {!! Form::label('date','date') !!}
-                  {!! Form::text('date') !!}
+                  {!! Form::text('date',null,['class' => 'date']) !!}
 
                   {!! Form::label('tuss_id','tuss_id') !!}
                   {!! Form::select('tuss_id', ['0' => 'Selecione o TUSS']) !!}
@@ -110,7 +111,7 @@
                   {!! Form::label('procedured_number','procedured_number') !!}
                   {!! Form::text('procedured_number') !!}
 
-                  {!! Form::submit('Registrar' ,['id' => 'btn_cadastro', 'class' => 'btn btn-primary']) !!}
+                  {!! Form::submit('Registrar' ,['id' => 'btn_procedure', 'class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
 
               </div>

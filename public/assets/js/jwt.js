@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 //masks
 $('.cellphone').mask('(00)00000-0000');
+$('.date').mask('00-00-0000');
 
 token_Auth = '';
 
@@ -60,18 +61,13 @@ function proceduresList()
         data:token,
         dataType: 'JSON',
         success: function (data) {
-        console.log("=================TUSS==================");
+        console.log("=================ProceduresList==================");
             console.log(data);
-            console.log("user_id: "+data['user_id']);
-            console.log("hospital_id: "+data['hospital_id']);
-            console.log("tuss_id: "+data['tuss_id']);
-            console.log("date: "+data['date']);
-            console.log("member_id: "+data['member_id']);
-            console.log("medical_insurance: "+data['medical_insurance']);
-            console.log("insurance_type: "+data['insurance_type']);
-            console.log("patient_name: "+data['patient_name']);
-            console.log("register_number: "+data['register_number']);
-            console.log("procedured_number: "+data['procedured_number']);
+            $.each(data,function(k,v){
+              var procedures = '<tr><td>'+v["user_id"]+'</td><td>'+v["hospital_id"]+'</td><td>'+v["date"]+'</td><td>'+v["tuss_id"]+'</td><td>'+v["member_id"]+'</td><td>'+v["medical_insurance"]+'</td><td>'+v["insurance_type"]+'</td><td>'+v["patient_name"]+'</td><td>'+v["register_number"]+'</td><td>'+v["procedured_number"]+'</td></tr>';
+              $(procedures).appendTo($(".procedures_list_content"));
+
+            });
         }
     });
 
@@ -82,7 +78,7 @@ function proceduresList()
 $("#btn_login").on("click",function(event){
   event.preventDefault();
 
-    login = $("#form_login").serializeArray();
+  login = $("#form_login").serializeArray();
   $.ajax({
       url: '/api/auth/login',
       type: 'POST',
@@ -106,43 +102,36 @@ $("#btn_login").on("click",function(event){
             $("#user_data").html(user);
             hospitalList(token_Auth);
             tussList(token_Auth);
+            $("#user_id").val(user_id);
+            $("#token").val(token_Auth);
           }
       }
   });
 })
 
 
-// meu usuario com token
-$("#btn_user_jwt").on("click",function(){
-  console.log(token_Auth);
+//procedure register
+$("#btn_procedure").on("click",function(){
+  event.preventDefault();
+  var form_procedure = $("#form_procedure").serializeArray();
   var token = {token:token_Auth};
+
   $.ajax({
-      url: '/api/user',
-      type: 'GET',
-      data:token,
+      url: '/api/auth/procedures/store',
+      type: 'POST',
+      data:form_procedure,
       dataType: 'JSON',
       success: function (data) {
-          console.log(data);
+      console.log("=================Procedures==================");
+        console.log(data);
+        $.each(data,function(k,v){
+          var procedures = '<tr><td>'+v["user_id"]+'</td><td>'+v["hospital_id"]+'</td><td>'+v["date"]+'</td><td>'+v["tuss_id"]+'</td><td>'+v["member_id"]+'</td><td>'+v["medical_insurance"]+'</td><td>'+v["insurance_type"]+'</td><td>'+v["patient_name"]+'</td><td>'+v["register_number"]+'</td><td>'+v["procedured_number"]+'</td></tr>';
+          $(procedures).appendTo($(".procedures_list_content"));
 
+        });
       }
   });
 
-});
-
-// lista usuers com token
-$("#btn_user_list_jwt").on("click",function(){
-  console.log(tokenAuth);
-  var token = {token:tokenAuth};
-  $.ajax({
-      url: '/api/allusers',
-      type: 'GET',
-      data:token,
-      dataType: 'JSON',
-      success: function (data) {
-          console.log(data);
-
-      }
-  });
 
 });
 
