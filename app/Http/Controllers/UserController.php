@@ -8,7 +8,7 @@ use App\User;
 use JWTAuthException;
 use Image;
 use Validator;
-use Carbon;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {

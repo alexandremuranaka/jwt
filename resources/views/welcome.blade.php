@@ -88,6 +88,9 @@
               <div class="col-xs-12 col-sm-4">
                 <ul id="hospital_list"></ul>
               </div>
+              <div class="col-xs-12 col-sm-4">
+                <ul id="tuss_list"></ul>
+              </div>
 
             </div>
           </div>
