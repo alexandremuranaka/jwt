@@ -24,7 +24,6 @@ class UserController extends Controller
         $replaces = array("(",")","-"," ");
         $request->cellphone = str_replace($replaces, "", $request->get('cellphone'));
 
-
       $register_rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
@@ -73,6 +72,7 @@ class UserController extends Controller
           $user->photo ="/assets/avatar/avatar_doc.jpg";
         }
         $user->save();
+        return response()->json("Registered successfully");
       }
 
     }

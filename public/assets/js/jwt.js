@@ -18,6 +18,10 @@ function hospitalList(token_Auth){
       success: function (data) {
       console.log("=================AUTH==================");
           console.log(data);
+          $.each(data, function(k,v){
+            var hospital = '<option value="'+v['id']+'">'+v['name']+'</option>';
+            $(hospital).appendTo($("#hospital_id"));
+          });
 
       }
   });
@@ -34,10 +38,43 @@ function tussList(token_Auth){
       dataType: 'JSON',
       success: function (data) {
       console.log("=================TUSS==================");
-          console.log(data);
+      console.log(data);
+        $.each(data, function(k,v){
+          var tuss = '<option value="'+v['id']+'">'+v['description']+'</option>';
+          $(tuss).appendTo($("#tuss_id"));
+        });
+      console.log($("#tuss_id").children().length);
 
       }
   });
+
+}
+
+function proceduresList()
+{
+
+    var token = {token:token_Auth};
+    $.ajax({
+        url: '/api/auth/procedures',
+        type: 'POST',
+        data:token,
+        dataType: 'JSON',
+        success: function (data) {
+        console.log("=================TUSS==================");
+            console.log(data);
+            console.log("user_id: "+data['user_id']);
+            console.log("hospital_id: "+data['hospital_id']);
+            console.log("tuss_id: "+data['tuss_id']);
+            console.log("date: "+data['date']);
+            console.log("member_id: "+data['member_id']);
+            console.log("medical_insurance: "+data['medical_insurance']);
+            console.log("insurance_type: "+data['insurance_type']);
+            console.log("patient_name: "+data['patient_name']);
+            console.log("register_number: "+data['register_number']);
+            console.log("procedured_number: "+data['procedured_number']);
+        }
+    });
+
 
 }
 

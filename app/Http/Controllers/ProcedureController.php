@@ -17,7 +17,7 @@ class ProcedureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function procedureList($id)
     {
       $procedures = DB::table('procedures')
         ->join('users', 'users_id', '=', 'user.id')
@@ -47,7 +47,34 @@ class ProcedureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      $procedure_rules = [
+        'user_id' => 'required',
+        'hospital_id' => 'required',
+        'tuss_id' => 'required',
+        'date' => 'required',
+      ];
+
+     $validator = Validator::make(request->all(),$procedure_rules);
+
+      if ($validator->fails()) {
+        return response()->json($validator->messages(), 200);
+       }
+      else
+      {
+        $procedure = new Procedure;
+        $procedure->user_id = $request->user_id;
+        $procedure->hospital_id = $request->hospital_id;
+        $procedure->tuss_id = $request->tuss_id;
+        $procedure->date = $request->date;
+        $procedure->member_id = $request->member_id;
+        $procedure->medical_insurance = $request->medical_insurance;
+        $procedure->insurance_type = $request->insurance_type;
+        $procedure->patient_name = $request->patient_name;
+        $procedure->register_number = $request->register_number;
+        $procedure->procedured_number = $request->procedured_number;
+        $procedure->save();
+      }
     }
 
     /**

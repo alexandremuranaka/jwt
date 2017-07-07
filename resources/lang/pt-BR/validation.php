@@ -38,7 +38,7 @@ return [
     'digits_between'       => 'O campo :attribute deve conter entre :min a :max dígitos.',
     'dimensions'           => 'O valor informado para o campo :attribute não é uma dimensão de imagem válida.',
     'distinct'             => 'O campo :attribute contém um valor duplicado.',
-    'email'                => 'O campo :attribute não contém um endereço de email válido.',
+    'email'                => ['O campo :attribute não contém um endereço de email válido.','error 1209'],
     'exists'               => 'O valor selecionado para o campo :attribute é inválido.',
     'file'                 => 'O campo :attribute deve conter um arquivo.',
     'filled'               => 'O campo :attribute é obrigatório.',
@@ -84,7 +84,7 @@ return [
     ],
     'string'               => 'O campo :attribute deve ser uma string.',
     'timezone'             => 'O campo :attribute deve conter um fuso horário válido.',
-    'unique'               => 'O valor informado para o campo :attribute já está em uso.',
+    'unique'               => ['O valor informado para o campo :attribute já está em uso.','error 1210'],
     'uploaded'             => 'Falha no Upload do arquivo :attribute.',
     'url'                  => 'O formato da URL informada para o campo :attribute é inválido.',
 

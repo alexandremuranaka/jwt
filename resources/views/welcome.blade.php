@@ -65,15 +65,6 @@
                     {!! Form::submit('Cadastrar' ,['id' => 'btn_cadastro', 'class' => 'btn btn-primary']) !!}
                   {!! Form::close() !!}
                 </div>
-                @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
             </div>
           </div>
         </section>
@@ -85,11 +76,64 @@
                 <div id="user_data"></div>
                 <button id="btn_user_jwt" class="btn btn-primary">Usuario</button>
               </div>
-              <div class="col-xs-12 col-sm-4">
-                <ul id="hospital_list"></ul>
+              <div class="col-xs-12 col-sm-12">
+                <h3>Novo Registro de Procedimento</h3>
+                {!! Form::open(['url' => '/api/auth/procedures/store','id' => "form_cadastro",'files' => true]) !!}
+
+                  {!! Form::label('user_id','user_id') !!}
+                  {!! Form::text('user_id',null,['disabled' => 'true']) !!}
+
+                  {!! Form::label('hospital_id','hospital_id') !!}
+                  {!! Form::select('hospital_id', ['0' => 'Selecione um Hospital'] ) !!}
+
+                  {!! Form::label('date','date') !!}
+                  {!! Form::text('date') !!}
+
+                  {!! Form::label('tuss_id','tuss_id') !!}
+                  {!! Form::select('tuss_id', ['0' => 'Selecione o TUSS']) !!}
+
+                  {!! Form::label('member_id','member_id') !!}
+                  {!! Form::text('member_id') !!}
+
+                  {!! Form::label('medical_insurance','medical_insurance') !!}
+                  {!! Form::text('medical_insurance') !!}
+
+                  {!! Form::label('insurance_type','insurance_type') !!}
+                  {!! Form::text('insurance_type') !!}
+
+                  {!! Form::label('patient_name','patient_name') !!}
+                  {!! Form::text('patient_name') !!}
+
+                  {!! Form::label('register_number','register_number') !!}
+                  {!! Form::text('register_number') !!}
+
+                  {!! Form::label('procedured_number','procedured_number') !!}
+                  {!! Form::text('procedured_number') !!}
+
+                  {!! Form::submit('Registrar' ,['id' => 'btn_cadastro', 'class' => 'btn btn-primary']) !!}
+                {!! Form::close() !!}
+
               </div>
-              <div class="col-xs-12 col-sm-4">
-                <ul id="tuss_list"></ul>
+              <div class="col-xs-12 col-sm-12">
+                <h3>User Procedures list</h3>
+                <div class="table-responsive">
+                  <table id="procedures_list" class="table table-striped table-hover">
+                    <thead>
+                      <th>user_id</th>
+                      <th>hospital_id</th>
+                      <th>tuss_id</th>
+                      <th>date</th>
+                      <th>member_id</th>
+                      <th>medical_insurance</th>
+                      <th>insurance_type</th>
+                      <th>patient_name</th>
+                      <th>register_number</th>
+                      <th>procedured_number</th>
+                    </thead>
+                    <tbody class="procedures_list_content">
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
             </div>
