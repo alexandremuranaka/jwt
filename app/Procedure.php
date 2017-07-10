@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Procedure extends Model
 {
     //
-
+    public function tuss(){
+      return $this->belongsTo('App\Tuss','tuss_id');
+    }
+    public function hospital(){
+      return $this->belongsTo('App\Hospital','hospital_id');
+    }
     public function setDateAttribute($value)
     {
         $arrPartes = explode('/',$value);

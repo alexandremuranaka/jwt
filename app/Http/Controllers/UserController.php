@@ -31,6 +31,23 @@ class UserController extends Controller
         'password' => 'required|string|min:6',
       ];
 
+      $register_messages = [
+        'name.required' => ['Name is required','1201'],
+        'name.max' => ['Name max lenth 255','1201'],
+        'name.string' => ['Name must be string','1201'],
+        'email.required' => ['E-mail is required','1202'],
+        'email.max' => ['E-mail max lenth 255','1202'],
+        'email.string' => ['E-mail must be string','1202'],
+        'email.unique' => ['E-mail is alredy taken','1202'],
+        'cellphone.required' => ['Cellphone is required','1203'],
+        'cellphone.max' => ['Cellphone max lenth 255','1203'],
+        'cellphone.string' => ['Cellphone must be string','1203'],
+        'cellphone.unique' => ['Cellphone is alredy taken','1203'],
+        'password.required' => ['Password is required','1204'],
+        'password.min' => ['Password min lenth 255','1204'],
+        'password.string' => ['Password must be string','1204'],
+      ];
+
       $register_data = array(
         'name' => $request->name,
         'email' => $request->email,
@@ -39,7 +56,7 @@ class UserController extends Controller
         'photo' => $request->photo
       );
 
-     $validator = Validator::make($register_data,$register_rules);
+     $validator = Validator::make($register_data,$register_rules,$register_messages);
 
       if ($validator->fails()) {
         return response()->json($validator->messages(), 200);

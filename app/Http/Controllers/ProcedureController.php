@@ -9,6 +9,7 @@ use Validator;
 use JWTAuth;
 use JWTAuthException;
 use App\User;
+use DB;
 use App\Procedure;
 use Carbon\Carbon;
 
@@ -22,7 +23,7 @@ class ProcedureController extends Controller
     public function procedureList($id)
     {
       $procedures = DB::table('procedures')
-        ->join('users', 'users_id', '=', 'user.id')
+        ->join('users', 'users.id', '=', 'procedures.user_id')
         ->select('procedures.*')
         ->where('procedures.user_id','=',$id)
         ->get();
@@ -47,6 +48,8 @@ class ProcedureController extends Controller
      */
     public function store(Request $request)
     {
+      $replaces = array("/"," ");
+      $request->date = str_replace($replaces, "-", $request->get('date'));
 
       $procedure_rules = [
         'user_id' => 'required',
@@ -54,8 +57,14 @@ class ProcedureController extends Controller
         'tuss_id' => 'required',
         'date' => 'required',
       ];
+      $procedure_messages = [
+         'user.required' => ['User ID is required','1201'],
+         'date.required' => ['E-mail is required','1211'],
+         'hospital_id.required' => ['Hospital ID is required','1212'],
+         'tuss_id.required' => ['TUSS is required','1213'],
+      ];
 
-      $validator = Validator::make($request->all(),$procedure_rules);
+      $validator = Validator::make($request->all(),$procedure_rules,$procedure_messages);
 
       if ($validator->fails()) {
         return response()->json($validator->messages(), 200);
@@ -76,8 +85,16 @@ class ProcedureController extends Controller
         $procedure->procedured_comment = $request->procedured_comment;
         $procedure->save();
 
-        $all_procedures = Procedure::where("user_id",'=', $procedure->user_id)->first()->get();
-        return response()->json($all_procedures);
+        if($procedure->save())
+        {
+          return response()->json(['success'], 200);
+        }
+        else
+        {
+          return response()->json(['fail'], 500);
+        }
+        //$all_procedures = Procedure::where("user_id",'=', $procedure->user_id)->first()->get();
+        //return response()->json($all_procedures);
       }
 
 

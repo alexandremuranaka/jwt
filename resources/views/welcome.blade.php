@@ -85,13 +85,13 @@
                   {!! Form::hidden('token',null,['id' => 'token']) !!}
 
                   {!! Form::label('hospital_id','hospital_id') !!}
-                  {!! Form::select('hospital_id', ['0' => 'Selecione um Hospital'] ) !!}
+                  {!! Form::select('hospital_id', ['' => 'Selecione um Hospital'] ) !!}
 
                   {!! Form::label('date','date') !!}
                   {!! Form::text('date',null,['class' => 'date']) !!}
 
                   {!! Form::label('tuss_id','tuss_id') !!}
-                  {!! Form::select('tuss_id', ['0' => 'Selecione o TUSS']) !!}
+                  {!! Form::select('tuss_id', ['' => 'Selecione o TUSS']) !!}
 
                   {!! Form::label('member_id','member_id') !!}
                   {!! Form::text('member_id') !!}
@@ -139,8 +139,19 @@
                     </tbody>
                   </table>
                 </div>
+
+
               </div>
 
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <button id="btn_procedure_list" class="btn btn-primary">Listar Procedimentos</button>
+              </div>
             </div>
           </div>
         </section>

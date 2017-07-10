@@ -5,7 +5,7 @@ $('.cellphone').mask('(00)00000-0000');
 $('.date').mask('00-00-0000');
 
 token_Auth = '';
-
+user_id ;
 //hospital list
 function hospitalList(token_Auth){
   console.log("token_Auth "+token_Auth);
@@ -51,29 +51,6 @@ function tussList(token_Auth){
 
 }
 
-function proceduresList()
-{
-
-    var token = {token:token_Auth};
-    $.ajax({
-        url: '/api/auth/procedures',
-        type: 'POST',
-        data:token,
-        dataType: 'JSON',
-        success: function (data) {
-        console.log("=================ProceduresList==================");
-            console.log(data);
-            $.each(data,function(k,v){
-              var procedures = '<tr><td>'+v["user_id"]+'</td><td>'+v["hospital_id"]+'</td><td>'+v["date"]+'</td><td>'+v["tuss_id"]+'</td><td>'+v["member_id"]+'</td><td>'+v["medical_insurance"]+'</td><td>'+v["insurance_type"]+'</td><td>'+v["patient_name"]+'</td><td>'+v["register_number"]+'</td><td>'+v["procedured_number"]+'</td></tr>';
-              $(procedures).appendTo($(".procedures_list_content"));
-
-            });
-        }
-    });
-
-
-}
-
 //login
 $("#btn_login").on("click",function(event){
   event.preventDefault();
@@ -114,7 +91,6 @@ $("#btn_login").on("click",function(event){
 $("#btn_procedure").on("click",function(){
   event.preventDefault();
   var form_procedure = $("#form_procedure").serializeArray();
-  var token = {token:token_Auth};
 
   $.ajax({
       url: '/api/auth/procedures/store',
@@ -124,11 +100,33 @@ $("#btn_procedure").on("click",function(){
       success: function (data) {
       console.log("=================Procedures==================");
         console.log(data);
+        alert(data[0]);
+
+      }
+  });
+
+
+});
+//procedure list
+$("#btn_procedure_list").on("click",function(){
+  event.preventDefault();
+    var token = {token:token_Auth};
+  $.ajax({
+      url: '/api/auth/procedures/'+user_id+'/list',
+      type: 'POST',
+      data: token,
+      dataType: 'JSON',
+      success: function (data) {
+      console.log("=================Procedures==================");
+        console.log(data);
+
+        $(".procedures_list_content").empty();
         $.each(data,function(k,v){
           var procedures = '<tr><td>'+v["user_id"]+'</td><td>'+v["hospital_id"]+'</td><td>'+v["date"]+'</td><td>'+v["tuss_id"]+'</td><td>'+v["member_id"]+'</td><td>'+v["medical_insurance"]+'</td><td>'+v["insurance_type"]+'</td><td>'+v["patient_name"]+'</td><td>'+v["register_number"]+'</td><td>'+v["procedured_number"]+'</td><td>'+v["procedured_comment"]+'</td></tr>';
           $(procedures).appendTo($(".procedures_list_content"));
 
         });
+
       }
   });
 
