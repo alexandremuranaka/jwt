@@ -18,6 +18,11 @@ class UserController extends Controller
     }
 
 
+    public function index()
+    {
+      echo "ola index usercontroller";
+//      return view('api.index');
+    }
     public function register(Request $request){
 
 

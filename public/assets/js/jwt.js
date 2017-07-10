@@ -12,7 +12,7 @@ function hospitalList(token_Auth){
 
   var token = {token:token_Auth};
   $.ajax({
-      url: '/api/auth/hospital',
+      url: 'http://api.bymeds.com.br//api/auth/hospital',
       type: 'POST',
       data:token,
       dataType: 'JSON',
@@ -33,7 +33,7 @@ function tussList(token_Auth){
 
   var token = {token:token_Auth};
   $.ajax({
-      url: '/api/auth/tuss',
+      url: 'http://api.bymeds.com.br//api/auth/tuss',
       type: 'POST',
       data:token,
       dataType: 'JSON',
@@ -57,7 +57,7 @@ $("#btn_login").on("click",function(event){
 
   login = $("#form_login").serializeArray();
   $.ajax({
-      url: '/api/auth/login',
+      url: 'http://api.bymeds.com.br//api/auth/login',
       type: 'POST',
       data:login,
       dataType: 'JSON',
@@ -93,7 +93,7 @@ $("#btn_procedure").on("click",function(){
   var form_procedure = $("#form_procedure").serializeArray();
 
   $.ajax({
-      url: '/api/auth/procedures/store',
+      url: 'http://api.bymeds.com.br//api/auth/procedures/store',
       type: 'POST',
       data:form_procedure,
       dataType: 'JSON',
@@ -112,7 +112,7 @@ $("#btn_procedure_list").on("click",function(){
   event.preventDefault();
     var token = {token:token_Auth};
   $.ajax({
-      url: '/api/auth/procedures/'+user_id+'/list',
+      url: 'http://api.bymeds.com.br//api/auth/procedures/'+user_id+'/list',
       type: 'POST',
       data: token,
       dataType: 'JSON',
@@ -132,6 +132,26 @@ $("#btn_procedure_list").on("click",function(){
 
 
 });
+
+$("#btn_tuss").on("click",function(){
+
+  event.preventDefault();
+  var token = {token:token_Auth};
+  $.ajax({
+      url: 'http://api.bymeds.com.br/api/auth/tuss/a123213123/show',
+      type: 'POST',
+      data: token,
+      dataType: 'JSON',
+      success: function (data) {
+      console.log("=================TUSS FIND==================");
+        console.log(data);
+
+
+      }
+  });
+
+});
+
 
 
 

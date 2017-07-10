@@ -10,12 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+die('web');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::domain('app.bymeds.com.br')->group(function(){
+  Route::get('/', function(){
+    echo "hohoho";
+    //return view('admin.entrar');
+  });
+
+  //Route::resource('/admin','AdminController');
+  //
+  // Route::get('/', 'AdminController@index' );
+  // Route::get('/signin', 'AdminController@signin' );
+  // Route::get('/cadastrar', 'AdminController@cadastrar');
+  // Route::post('/cadastrar/store', 'AdminController@store');
+  // Route::get('/recover', 'AdminController@recover');
+  // Route::get('/admin', 'AdminController@dash');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/entrar', 'HomeController@entrar')->name('entrar');
+
+
+Route::domain('api.bymeds.com.br')->group(function(){
+  Route::get('/', function(){
+    return view('api.index');
+  });
+
+});

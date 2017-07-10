@@ -15,7 +15,11 @@ class TussController extends Controller
     $tuss = Tuss::get();
     return response()->json($tuss);
   }
-
+  public function show($id)
+  {
+    $tuss = Tuss::find($id)->first();
+    return response()->json($tuss);
+  }
   public function index()
   {
     $tuss = Tuss::get();

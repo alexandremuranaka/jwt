@@ -19,13 +19,19 @@ use Illuminate\Http\Request;
 
 
 
-Route::post('auth/register', 'UserController@register');
-Route::post('auth/login', 'UserController@login');
+Route::domain('api.bymeds.com.br')->group(function () {
+  Route::post('/auth/register', 'UserController@register');
+  Route::post('/auth/login', 'UserController@login');
 
-Route::group(['middleware' => 'jwt.auth'], function () {
-    Route::get('user', 'UserController@getAuthUser');
-    Route::post('/auth/hospital', 'HospitalController@hospitalList');
-    Route::post('/auth/tuss', 'TussController@tusslList');
-    Route::post('/auth/procedures/{id}/list', 'ProcedureController@procedureList');
-    Route::post('/auth/procedures/store', 'ProcedureController@store');
+
+
+  Route::group(['middleware' => 'jwt.auth'], function () {
+      Route::get('user', 'UserController@getAuthUser');
+      Route::post('/auth/hospital', 'HospitalController@hospitalList');
+      Route::post('/auth/tuss/{tuss}/show', 'TussController@tusslList');
+      Route::post('/auth/tuss', 'TussController@tusslList');
+      Route::post('/auth/procedures/{id}/list', 'ProcedureController@procedureList');
+      Route::post('/auth/procedures/store', 'ProcedureController@store');
+  });
+
 });

@@ -6,11 +6,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProceduresTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
     public function up()
     {
       Schema::create('procedures', function (Blueprint $table) {
