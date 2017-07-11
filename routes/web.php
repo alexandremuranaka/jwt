@@ -10,22 +10,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-die('web');
+
 
 Route::domain('app.bymeds.com.br')->group(function(){
-  Route::get('/', function(){
-    echo "hohoho";
-    //return view('admin.entrar');
-  });
 
-  //Route::resource('/admin','AdminController');
-  //
-  // Route::get('/', 'AdminController@index' );
-  // Route::get('/signin', 'AdminController@signin' );
-  // Route::get('/cadastrar', 'AdminController@cadastrar');
-  // Route::post('/cadastrar/store', 'AdminController@store');
-  // Route::get('/recover', 'AdminController@recover');
-  // Route::get('/admin', 'AdminController@dash');
+  Route::get('/', function(){return view('admin.index');})->name('login');
+  Route::post('/', 'AdminController@login');
+  Route::get('/register', function(){return view('admin.register');})->name('register');
+  Route::post('/register', 'AdminController@register');
+  Route::get('/recover', function(){return view('admin.recover');})->name('recover');
+  Route::post('/recover', 'AdminController@recover');
+  Route::post('/logout', 'AdminController@logout');
+
+
+   Route::get('/dashboard', 'DashboardController@index');
+  // Route::post('/dashboard/logout', 'AdminController@logout');
+  // Route::get('/dashboard/register', 'AdminController@register');
+  // Route::post('/dashboard/register/store', 'AdminController@store');
+  // Route::get('/dashboard/recover', 'AdminController@recover');
+  // Route::post('/dashboard/recover', 'AdminController@recovermail');
+
+
 });
 
 

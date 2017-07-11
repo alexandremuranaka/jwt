@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use JWTAuth;
-use App\User;
 use JWTAuthException;
+use App\User;
 use Image;
 use Validator;
 use Carbon\Carbon;
@@ -18,11 +18,6 @@ class UserController extends Controller
     }
 
 
-    public function index()
-    {
-      echo "ola index usercontroller";
-//      return view('api.index');
-    }
     public function register(Request $request){
 
 

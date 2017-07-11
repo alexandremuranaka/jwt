@@ -9,14 +9,14 @@
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/jwt.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/css/jwt.css" rel="stylesheet" type="text/css"/>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script defer src="assets/js/bootstrap.min.js"></script>
-<script defer src="assets/js/jquery.mask.min.js"></script>
-<script defer src="assets/js/jwt.js"></script>
+<script defer src="/assets/js/bootstrap.min.js"></script>
+<script defer src="/assets/js/jquery.mask.min.js"></script>
+<script defer src="/assets/js/jwt.js"></script>
 
 </head>
 <body>
