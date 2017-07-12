@@ -23,12 +23,19 @@ Route::domain('app.bymeds.com.br')->group(function(){
   Route::post('/logout', 'AdminController@logout');
 
 
+
    Route::get('/dashboard', 'DashboardController@index');
-  // Route::post('/dashboard/logout', 'AdminController@logout');
-  // Route::get('/dashboard/register', 'AdminController@register');
-  // Route::post('/dashboard/register/store', 'AdminController@store');
-  // Route::get('/dashboard/recover', 'AdminController@recover');
-  // Route::post('/dashboard/recover', 'AdminController@recovermail');
+   Route::get('/dashboard/profile/', 'DashboardController@edit');
+   Route::post('/dashboard/profile/update', 'DashboardController@update');
+   Route::post('/dashboard/profile/updatepass', 'DashboardController@updatepass');
+   Route::get('/dashboard/bymedspay/', 'BymedspayController@procedurelist');
+   Route::get('/dashboard/bymedspay/hospital', 'BymedspayController@hospital');
+   Route::post('/dashboard/bymedspay/hospital', 'BymedspayController@hospitalselected');
+   Route::get('/dashboard/bymedspay/my-register', 'BymedspayController@myregister');
+   Route::get('/dashboard/bymedspay/register', 'BymedspayController@register');
+   Route::get('/dashboard/bymedspay/register/{id}/show', 'BymedspayController@registershow');
+   Route::get('/dashboard/bymedspay/register-all', 'BymedspayController@registerall');
+
 
 
 });

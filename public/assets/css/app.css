@@ -22,11 +22,12 @@ a:hover, a:active{color: #125694;}
 hr{margin: 10px 0;border-color:#ccc;}
 
 label{width:100%;color: #1c66a9;font-weight:normal;}
-input[type="text"],input[type="email"],input[type="number"],input[type="tel"],input[type="file"],input[type="password"],input[type="submit"],select,textarea{border:solid 1px #ccc;width:100%;margin:0 0 0 0;padding: 10px;border-radius:4px;}
+.inputtext,input[type="text"],input[type="email"],input[type="number"],input[type="tel"],input[type="file"],input[type="password"],input[type="submit"],select,textarea{border:solid 1px #ccc;width:100%;margin:0 0 0 0;padding: 10px;border-radius:4px;}
 input[type="text"]:disabled{background:#ccc;}
 input[type="radio"]{margin:20px 0;}
 textarea{height:150px;margin:20px 0;}
 input[type="submit"]{background:#1c66a9;border:none;color:#fff;font-weight:500;}
+input:disabled,.inputtext{background:#ccc !important;}
 span.error{color:#ca0000;}
 input.error{border:sodli 1px #ca0000;}
 .btn.btn-primary{background:#1c66a9;border:none;width:100%;margin:0;padding:15px 20px;color:#fff;font-weight:500;border-radius:4px;box-shadow: 0 1px 3px rgba(0,0,0,0.45);}
@@ -50,13 +51,21 @@ input.error{border:sodli 1px #ca0000;}
 }
 
 
+
 /* login  */
 #login{margin:120px 0 0 0;}
 #login img{width:80%;margin:0 10% 30px;}
 .form_login{background:#efefef;box-shadow: 0 1px 3px rgba(0,0,0,0.45);}
 .form_login h3{border-bottom:solid 1px #ccc;margin:0 0 15px 0;line-height: 40px;font-size: 24px;text-transform: uppercase;}
-
 .form_login input[type="text"],.form_login  input[type="email"],.form_login  input[type="number"],.form_login  input[type="tel"],.form_login  input[type="file"],.form_login  input[type="password"],.form_login  input[type="submit"],.form_login select,.form_login textarea{margin:5px 0 15px;}
+
+
+/* form_basic */
+.form_basic{background:#efefef;padding:15px;box-shadow: 0 1px 3px rgba(0,0,0,0.45);}
+.form_basic h3{border-bottom:solid 1px #ccc;margin:0 0 15px 0;line-height: 40px;font-size: 24px;}
+.form_basic label{margin:15px 0 5px;}
+.form_basic button,.form_basic input[type="submit"],.form_basic .btn{margin:15px 0 0 0;}
+
 
 /* header  */
 #header{background:#fff;position:fixed;top:0;right:0;left:0;z-index: 10;box-shadow: 0 1px 3px rgba(0,0,0,0.45);}
@@ -83,7 +92,7 @@ input.error{border:sodli 1px #ca0000;}
 #btn_menu.active .bar{background:#000;}
 
 
-#menu{background:#fff;border-right:solid 1px #dedede;width:250px;margin:120px 0 0 -250px;position:relative;float: left;transition:all 0.5s;overflow: hidden;}
+#menu{background:#fff;border-right:solid 1px #dedede;width:250px;margin:60px 0 0 -250px;position:relative;float: left;transition:all 0.5s;overflow: hidden;}
 #menu.active{margin:120px 0 0 0;}
 
 #menu .item{background:#fff;border-bottom:solid 1px #dedede;width:100%;padding:0;}
@@ -170,13 +179,13 @@ input.error{border:sodli 1px #ca0000;}
 .sanfona .conteudo p span{font-size: 12px;}
 .sanfona.fav h4{background: #f7c04b;color:#000;}
 
-
+/*
 
 form.form_basic{margin:30px 0 0;padding:0;position: relative;}
 form.form_basic select,form.form_basic input[type="text"],form.form_basic input[type="file"],form.form_basic input[type="email"],form.form_basic input[type="password"],form.form_basic input[type="number"],form.form_basic input[type="tel"]{margin:0 0 20px 0;}
 form.form_basic .search_holder{position: relative;}
 form.form_basic .btn{margin:0 0 20px;}
-form.form_basic .btn_search{background:none;border:none;position:absolute;top:10px;right:5px;z-index: 1;font-size: 20px;color:#1c66a9;}
+form.form_basic .btn_search{background:none;border:none;position:absolute;top:10px;right:5px;z-index: 1;font-size: 20px;color:#1c66a9;}*/
 
 .member{background:#efefef;padding:5px;position: relative;}
 .member:nth-child(2n){background: #fff;}

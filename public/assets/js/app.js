@@ -94,6 +94,11 @@ $(".sanfona h4").on("click", function(){
 });
 
 
+if( $(".select").length > 0 )
+{
+	$('.select').select2();
+}
+
 if( $(".listagem").length > 0 )
 {
 	$('.listagem').slimScroll({ height: '200px'});
@@ -187,7 +192,7 @@ if($("#agenda").length > 0)
 			},
 			{
 				title: 'Click for Google',
-				url: 'http://google.com/',	
+				url: 'http://google.com/',
 				start: '2017-05-28'
 			}
 		]
@@ -202,7 +207,7 @@ if($("#agenda").length > 0)
 
 if($("#casos").length > 0)
 {
-	
+
 
  const data = [
         ['Inquiries', 300],
@@ -212,8 +217,8 @@ if($("#casos").length > 0)
     ];
     const options = {
         block: {
-            dynamicHeight: true,	
-            dynamicSlope: true,	
+            dynamicHeight: true,
+            dynamicSlope: true,
             minHeight: 15,
         },
     };

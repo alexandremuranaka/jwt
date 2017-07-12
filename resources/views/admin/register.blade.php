@@ -18,7 +18,7 @@
       {!! Form::text('email',old('email'))!!}
 
       {!! Form::label('cellphone','Celular') !!}
-      {!! Form::text('cellphone',old('cellphone'),['class'=>'cellphone']) !!}
+      {!! Form::text('cellphone',old('cellphone'),['class'=>'cellphone', 'placeholder' => '(xx) 00000-000']) !!}
 
       {!! Form::label('Photo','Foto') !!}
       {!! Form::file('photo') !!}
