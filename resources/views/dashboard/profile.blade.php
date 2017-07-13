@@ -9,12 +9,13 @@
       <div class="alert alert-danger" role="alert">{{ $error }}</div>
     @endforeach
   @endif
+  
+  @if(Session::has('fail'))
+    <div class="alert alert-danger" role="alert">{!! Session::get('fail') !!}</div>
+  @endif
 
   @if(Session::has('success'))
     <div class="alert alert-success" role="alert">{!! Session::get('success') !!}</div>
-  @endif
-  @if(Session::has('fail'))
-    <div class="alert alert-danger" role="alert">{!! Session::get('fail') !!}</div>
   @endif
 </div>
 <div class="col-xs-12 col-sm-6">

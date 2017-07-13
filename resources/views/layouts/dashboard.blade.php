@@ -55,7 +55,7 @@
 		<h3><i class="fa fa-stethoscope"></i>byMeds Pay <i class="fa fa-chevron-right active"></i><i class="fa fa-chevron-down"></i></h3>
 		<div class="content">
 			<div class="item"><p><a href="/dashboard/bymedspay/hospital"><i class="fa fa-file-o"></i>Selecionar Hospital</a></p></div>
-			<div class="item"><p><a href="/dashboard/bymedspay/my-register"><i class="fa fa-file-o"></i>Meus Atendimentos</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/my-register"><i class="fa fa-file-o"></i>Meus Registros</a></p></div>
 			<div class="item"><p><a href="/dashboard/bymedspay/register"><i class="fa fa-file-o"></i>Registrar Atendimento</a></p></div>
 			<div class="item"><p><a href="/dashboard/bymedspay/register-all"><i class="fa fa-file-o"></i>Todos Atendimentos</a></p></div>
 		</div>

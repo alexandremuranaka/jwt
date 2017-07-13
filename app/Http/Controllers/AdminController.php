@@ -59,8 +59,7 @@ class AdminController extends Controller
         }
         else
         {
-          $message = "Login ou Senha Inválido";
-          return redirect()->back()->withInput()->with('message', $message);
+          return redirect()->back()->with('fail','Login ou Senha Inválido');
         }
 
     }
@@ -76,8 +75,7 @@ class AdminController extends Controller
         }
         else
         {
-          $message = "Login ou Senha Inválido";
-          return redirect()->back()->withInput()->with('message', $message);
+            return redirect()->back()->with('fail','Login ou Senha Inválido');
         }
     }
   }
@@ -137,8 +135,6 @@ class AdminController extends Controller
             $user->email = $request->get('email');
             $user->cellphone = intval($request->cellphone);
             $user->password =  bcrypt($request->get('password'));
-            $user->created_at =  Carbon::now();
-            $user->updated_at =  Carbon::now();
 
             //image
             if( $request->photo )
