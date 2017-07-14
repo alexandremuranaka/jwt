@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="col-xs-12 col-sm-12">
-  <h1>Novo Registro<span>{{session('hospital_name')}}</span></h1>
+  <h1>Novo Registro<span> @if(session('hospital_name')){{session('hospital_name')}} - <a class="change" href="/dashboard/bymedspay/hospital"><i class="fa fa-pencil-square-o"></i>Alterar Hospital</a>@else <a href="/dashboard/bymedspay/hospital" class="danger">Selecione o Hospital</a> @endif</span></h1>
   <hr/>
   @if ($errors)
     @foreach($errors->all() as $error )

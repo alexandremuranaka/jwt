@@ -14,11 +14,12 @@ class CreateMembersTable extends Migration
     public function up()
     {
       Schema::create('members', function (Blueprint $table) {
-          $table->increments('id');
-          $table->integer('user_id')->nullable();
-          $table->string('cellphone');
-          $table->string('profession');
-          $table->timestamps();
+        $table->increments('id');
+        $table->integer('user_id')->nullable();
+        $table->string('member_name');
+        $table->string('cellphone');
+        $table->string('profession');
+        $table->timestamps();
       });
     }
 

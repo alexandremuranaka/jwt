@@ -30,6 +30,38 @@ $("#menu .father h3").on("click",function(){
 });
 
 
+pagination = 1;
+$("#register_load").on("click",function(){
+pagination++;
+	  $.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+	      url: '/dashboard/bymedspay/register-all-pagination',
+	      type: 'POST',
+	      data: {page: pagination},
+	      dataType: 'JSON',
+	      success: function (response) {
+					if(response['from'] == null )
+					{
+						$("#register_load").css("display","none");
+					}
+					else
+					{
+
+					  $.each(response['data'], function(k,v){
+							register = '<div class="registro_item"><p>'+v['barcode']+' '+v['patient_name']+' ('+v['medical_insurance']+') - '+v['name']+' <a href="/dashboard/bymedspay/register/'+v['id']+'/show"><i class="fa fa-eye"></i></a><a href="/dashboard/bymedspay/register/'+v['id']+'/delete"><i class="fa fa-times"></i></a></p></div>';
+	            $(register).appendTo($("#registerall"));
+	          });
+
+	      	}
+	      }
+	  });
+
+
+});
+
+
 if($("#chart_procedimento").length > 0)
 {
 	var ctx = document.getElementById("chart_procedimento").getContext('2d');

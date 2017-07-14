@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Bymedspay;
 use App\Hospital;
 use App\Register;
-use Image;
 use Validator;
 use Carbon\Carbon;
 use Auth;
@@ -76,7 +75,7 @@ class BymedspayController extends Controller
     else
     {
       $taken = DB::table('registers')->join('hospitals', 'registers.hospital_id', '=', 'hospitals.id')
-      ->where('registers.hospital','=', $request->hospital_id)
+      ->where('registers.hospital_id','=', $request->hospital_id)
       ->where('registers.barcode','=', $request->barcode)
       ->select('registers.*')->first();
 
@@ -108,6 +107,19 @@ class BymedspayController extends Controller
     }
 
 
+  }
+  public function registerdestroy($id)
+  {
+    $register = Register::find($id);
+    if($register)
+    {
+      $register->delete();
+      return redirect()->action('BymedspayController@myregister');
+    }
+    else
+    {
+      return redirect()->back()->with('fail','Registro não encontrado');
+    }
   }
   public function register()
   {
@@ -287,7 +299,23 @@ class BymedspayController extends Controller
   }
   public function registerall()
   {
+      $user = Auth::user()->id;
+      $registers = DB::table('registers')
+      ->join('users', 'registers.user_id','=','users.id')
+      ->join('hospitals', 'registers.hospital_id','=','hospitals.id')
+      ->where('registers.user_id', '=', $user)
+      ->select('registers.*','hospitals.name')->take(10)->get();
+      return view('dashboard.bymedspay.registerall')->with('registers',$registers);
+  }
+  public function registerpagination(Request $request)
+  {
+
+      $user = Auth::user()->id;
+      $registers = DB::table('registers')
+      ->join('users','users.id', '=', 'registers.user_id')
+      ->join('hospitals','hospitals.id', '=', 'registers.hospital_id')
+      ->select('registers.*','hospitals.name')->where('users.id' ,'=', $user)->paginate(10);
+      return response()->json($registers);
 
   }
-
 }

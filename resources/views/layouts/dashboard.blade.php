@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title>byMeds</title>
 
 <!-- Fonts -->
@@ -18,8 +18,8 @@
 <script defer src="/assets/js/bootstrap.min.js"></script>
 <script defer src="/assets/js/jquery.mask.min.js"></script>
 <script defer src="/assets/js/select2.min.js"></script>
-<script defer src="/assets/js/app.js"></script>
 
+<script defer src="/assets/js/app.js"></script>
 </head>
 <body>
 <section id="header">
@@ -54,10 +54,11 @@
 	<div class="item father">
 		<h3><i class="fa fa-stethoscope"></i>byMeds Pay <i class="fa fa-chevron-right active"></i><i class="fa fa-chevron-down"></i></h3>
 		<div class="content">
-			<div class="item"><p><a href="/dashboard/bymedspay/hospital"><i class="fa fa-file-o"></i>Selecionar Hospital</a></p></div>
-			<div class="item"><p><a href="/dashboard/bymedspay/my-register"><i class="fa fa-file-o"></i>Meus Registros</a></p></div>
-			<div class="item"><p><a href="/dashboard/bymedspay/register"><i class="fa fa-file-o"></i>Registrar Atendimento</a></p></div>
-			<div class="item"><p><a href="/dashboard/bymedspay/register-all"><i class="fa fa-file-o"></i>Todos Atendimentos</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/hospital"><i class="fa fa-hospital-o"></i>Selecionar Hospital</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/my-register"><i class="fa fa-address-card-o"></i>Meus Registros</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/register"><i class="fa fa-pencil-square-o"></i>Novo Registro</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/register-all"><i class="fa fa-list"></i>Todos Atendimentos</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/tema"><i class="fa fa-users"></i>Minha Equipe</a></p></div>
 		</div>
 	</div>
 
@@ -88,6 +89,7 @@
 		</div>
 	</div>
 </div>
+<div id="loading"><h1><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></h1></div>
 
 <div id="wrapper" class="active">
   <div class="container-fluid">

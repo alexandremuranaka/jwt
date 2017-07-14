@@ -36,9 +36,12 @@ Route::domain('app.bymeds.com.br')->group(function(){
    Route::post('/dashboard/bymedspay/register', 'BymedspayController@registerstore');
    Route::get('/dashboard/bymedspay/register/{id}/show', 'BymedspayController@registershow');
    Route::get('/dashboard/bymedspay/register/{id}/edit', 'BymedspayController@registeredit');
+   Route::get('/dashboard/bymedspay/register/{id}/destroy', 'BymedspayController@registerdestroy');
    Route::post('/dashboard/bymedspay/register/{id}/update', 'BymedspayController@registerupdate');
    Route::post('/dashboard/bymedspay/register/favorite/{id}/update', 'BymedspayController@registerfavoriteupdate');
    Route::get('/dashboard/bymedspay/register-all', 'BymedspayController@registerall');
+   Route::post('/dashboard/bymedspay/register-all-pagination', 'BymedspayController@registerpagination');
+   Route::resource('/dashboard/bymedspay/procedure', 'BymedspayprocedureController');
 
 
 
