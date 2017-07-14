@@ -9,7 +9,7 @@
       <div class="alert alert-danger" role="alert">{{ $error }}</div>
     @endforeach
   @endif
-  
+
   @if(Session::has('fail'))
     <div class="alert alert-danger" role="alert">{!! Session::get('fail') !!}</div>
   @endif

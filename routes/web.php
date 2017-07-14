@@ -31,6 +31,7 @@ Route::domain('app.bymeds.com.br')->group(function(){
    Route::get('/dashboard/bymedspay/', 'BymedspayController@procedurelist');
    Route::get('/dashboard/bymedspay/hospital', 'BymedspayController@hospital');
    Route::post('/dashboard/bymedspay/hospital', 'BymedspayController@hospitalselected');
+   /*
    Route::get('/dashboard/bymedspay/my-register', 'BymedspayController@myregister');
    Route::get('/dashboard/bymedspay/register', 'BymedspayController@register');
    Route::post('/dashboard/bymedspay/register', 'BymedspayController@registerstore');
@@ -42,9 +43,19 @@ Route::domain('app.bymeds.com.br')->group(function(){
    Route::get('/dashboard/bymedspay/register-all', 'BymedspayController@registerall');
    Route::post('/dashboard/bymedspay/register-all-pagination', 'BymedspayController@registerpagination');
    Route::resource('/dashboard/bymedspay/procedure', 'BymedspayprocedureController');
+*/
 
-
-
+   // Conciliação
+   Route::get('/dashboard/bymedspay/conciliacao','ConciliacaoController@index');
+   Route::get('/dashboard/bymedspay/conciliacao/hospitals','ConciliacaoController@hospitals');
+   Route::post('/dashboard/bymedspay/conciliacao/planilha','ConciliacaoController@postPlanilha');
+   Route::get('/dashboard/bymedspay/conciliacao/set-hospital/{id}','ConciliacaoController@setHospital');
+   Route::get('/dashboard/bymedspay/conciliacao/pendentes','ConciliacaoController@pendentes');
+   Route::post('/dashboard/bymedspay/conciliacao/pendentes/email','ConciliacaoController@pendenteEmail');
+   Route::get('/dashboard/bymedspay/conciliacao/pendentes/excel','ConciliacaoController@pendenteExcel');
+   Route::get('/dashboard/bymedspay/conciliacao/nao-identificados','ConciliacaoController@naoIdentificados');
+   Route::post('/dashboard/bymedspay/conciliacao/nao-identificados/conciliar','ConciliacaoController@conciliar');
+   Route::get('/dashboard/bymedspay/conciliacao/conciliados','ConciliacaoController@conciliados');
 });
 
 

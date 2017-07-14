@@ -55,12 +55,35 @@
 		<h3><i class="fa fa-stethoscope"></i>byMeds Pay <i class="fa fa-chevron-right active"></i><i class="fa fa-chevron-down"></i></h3>
 		<div class="content">
 			<div class="item"><p><a href="/dashboard/bymedspay/hospital"><i class="fa fa-hospital-o"></i>Selecionar Hospital</a></p></div>
+			<div class="item father">
+				<h3><i class="fa fa-stethoscope"></i>Conciliação<i class="fa fa-chevron-right active"></i><i class="fa fa-chevron-down"></i></h3>
+				<div class="content">
+					<div class="item"><p><a href="/dashboard/bymedspay/conciliacao"><i class="fa fa-file-o"></i> Conciliação </a></p></div>
+					<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/pendentes"><i class="fa fa-file-o"></i> Pendentes </a></p></div>
+					<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/pendentes/excel"><i class="fa fa-file-o"></i> Excel </a></p></div>
+					<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/nao-identificados"><i class="fa fa-file-o"></i> Não Identificados </a></p></div>
+					<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/conciliados"><i class="fa fa-file-o"></i> Conciliados </a></p></div>
+
+				</div>
+			</div>
+{{--
+
+<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/pendentes/email"><i class="fa fa-file-o"></i> conciliação </a></p></div>
+	<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/planilha"><i class="fa fa-file-o"></i> conciliação </a></p></div>
+	<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/set-hospital/{id}"><i class="fa fa-file-o"></i> conciliação </a></p></div>
+	<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/hospitals"><i class="fa fa-file-o"></i> conciliação </a></p></div>
+
+
+	<div class="item"><p><a href="/dashboard/bymedspay/conciliacao/nao-identificados/conciliar"><i class="fa fa-file-o"></i> Não Idenficados </a></p></div>
+
 			<div class="item"><p><a href="/dashboard/bymedspay/my-register"><i class="fa fa-address-card-o"></i>Meus Registros</a></p></div>
 			<div class="item"><p><a href="/dashboard/bymedspay/register"><i class="fa fa-pencil-square-o"></i>Novo Registro</a></p></div>
 			<div class="item"><p><a href="/dashboard/bymedspay/register-all"><i class="fa fa-list"></i>Todos Atendimentos</a></p></div>
-			<div class="item"><p><a href="/dashboard/bymedspay/tema"><i class="fa fa-users"></i>Minha Equipe</a></p></div>
+			<div class="item"><p><a href="/dashboard/bymedspay/team"><i class="fa fa-users"></i>Minha Equipe</a></p></div>
+--}}
 		</div>
 	</div>
+
 
 	<div class="item father">
 		<h3><i class="fa fa-stethoscope"></i>Casos <i class="fa fa-chevron-right active"></i><i class="fa fa-chevron-down"></i></h3>
@@ -94,6 +117,14 @@
 <div id="wrapper" class="active">
   <div class="container-fluid">
   	<div class="row">
+			<div class="col-xs-12 col-sm-12">
+				@if(Session::has('messageBody'))
+				 <div class="alert alert-{{ Session::get('messageType') }} alert-dismissable">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						 <?php echo Session::get('messageBody') ?>
+				 </div>
+				@endif
+			</div>
       @yield('content')
     </div>
   </div>

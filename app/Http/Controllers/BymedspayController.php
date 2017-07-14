@@ -38,7 +38,7 @@ class BymedspayController extends Controller
       $hospital = Hospital::find($request->id);
       session()->put('hospital_id', $hospital->id);
       session()->put('hospital_name', $hospital->name);
-      return redirect()->action('BymedspayController@register');
+      return redirect()->action('ConciliacaoController@index');
     }
     else
     {
